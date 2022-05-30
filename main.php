@@ -70,5 +70,3 @@ $a = new colors_random(110,255,255);
 
 var_dump($a);
 
-
-
