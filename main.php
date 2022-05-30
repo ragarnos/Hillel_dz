@@ -64,7 +64,8 @@ class colors_random
         $new_color[] = round(($color1->get_blue() + $color2->get_blue()) / 2);
         return ($new_color);
     }
-}
+} 
+
 $a = new colors_random(110,255,255);
 
 var_dump($a);
