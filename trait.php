@@ -26,5 +26,5 @@ function getSum()
     $o->method1();
     $o->method2();
 }
-return getSum();
+echo getSum();
 ?>
