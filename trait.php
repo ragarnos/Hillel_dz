@@ -25,7 +25,6 @@ function getSum()
     $o->method();
     $o->method1();
     $o->method2();
-    $o->method_class();
 }
-getSum()
+return getSum();
 ?>
