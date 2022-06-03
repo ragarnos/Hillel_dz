@@ -1,7 +1,6 @@
 <?php
-
-namespace App;
-class User
+namespace App\Models;
+class Prodict
 {
     public function __construct()
     {

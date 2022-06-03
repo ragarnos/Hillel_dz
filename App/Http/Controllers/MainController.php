@@ -1,7 +1,6 @@
 <?php
-
-namespace App;
-class User
+namespace App\Http\Controllers;
+class MainController
 {
     public function __construct()
     {
