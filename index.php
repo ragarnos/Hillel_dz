@@ -28,4 +28,3 @@ try {
 }catch (Exception $e){
     die('Строка: #'.__LINE__." => Ошибка в файле: ".$e->getFile());
 }
-
