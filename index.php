@@ -1,30 +1,83 @@
+
 <?php
-
-
-class User
+interface Format
 {
-    public int $id;
-    public string $password;
-    public $email;
+    public function setFormat(string $logger);
+}
+interface Run
+{
+    public function setRun(Format $deliver);
+}
+class FormatRaw implements Format
+{
+    public function setFormat(string $string)
+    {
+        return $string;
+    }
+}
+class FormatWithDate implements Format
+{
 
-    public function __construct($id,$password, $email)
+    public function setFormat(string $string)
     {
-        if ($id !== 1){
-            throw new Exception('Id поле должно содержать только цыфры');
-        }
-        if (strlen($password) > 8){
-            throw new Exception('Password поле должно содержать Не более 8 цыфр');
-        }
-    }
-    public function getUserData()
-    {
-        return $this->id;
-        return $this->email;
+        return date('Y-m-d') . $string;
     }
 }
-try {
-    $users = new User(2,"sadawdas", 'Ragarnos12@gmail.com');
-    $users->getUserData();
-}catch (Exception $e){
-    die('Строка: #'.__LINE__." => Ошибка в файле: ".$e->getFile());
+class FormatDateAndDetails implements Format
+{
+    public function setFormat(string $string)
+    {
+        return date('Y-m-d') . $string;
+    }
 }
+class RunEmail implements Run
+{
+    public function setRun($format)
+    {
+        echo "Вывод ({$format}) в email";
+    }
+}
+class RunSms implements Run
+{
+    public function setRun($format)
+    {
+        echo "Вывод ({$format}) в SMS";
+    }
+}
+class RunConsole implements Run
+{
+    public function setRun($format)
+    {
+        echo "Вывод ({$format}) в консоле";
+    }
+}
+class Logger
+{
+    private $format;
+    private $run;
+    public function __construct(Format $format, Run $delivery)
+    {
+        $this->format = $format;
+        $this->run = $delivery;
+    }
+
+    public function log($string)
+    {
+        $this->run($this->format($string));
+    }
+
+    public function format($string)
+    {
+        return $this->format->setFormat($string);
+    }
+
+    public function run($format)
+    {
+        $this->run->setRun($format);
+    }
+
+}
+
+$logger = new Logger(new FormatWithDate(), new RunConsole);
+$logger->log('');
+?>
