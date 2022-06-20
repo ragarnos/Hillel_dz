@@ -1,0 +1,15 @@
+{
+    "name": "ragar/hillel_dz",
+    "autoload": {
+        "psr-4": {
+            "Ragar\\HillelDz\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Eduard Vasyliev",
+            "email": "96519743+ragarnos@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}
