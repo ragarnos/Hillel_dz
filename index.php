@@ -1,93 +1,65 @@
 <?php
 
-interface  Rate_plan
+class Contacts{}
+interface CreatContact
 {
-    public function price();
-    public function category();
+    public function name($value): CreatContact;
+    public function surname($value): CreatContact;
+    public function phone($value): CreatContact;
+    public function email($value): CreatContact;
+    public function address($value): CreatContact;
 }
-abstract class newTaxi
+class Contact implements CreatContact
 {
-    abstract public function createCarTaxi(): Rate_plan;
-    public function CategoryAndPrice(): array
+    private $contact;
+    public function __construct()
     {
-        $price = $this->createCarTaxi()->price();
-        $category = $this->createCarTaxi()->category();
-        return compact('price', 'category');
+        $this->reset();
     }
-}
-class EconomyTariff implements Rate_plan
-{
-
-    public function price(): string
+    public function reset(): CreatContact
     {
-        return '55 грн';
+        $this->contact = new Contacts();
+        return $this;
     }
-
-    public function category(): string
+    public function phone($value): CreatContact
     {
-        return 'Эконом Класс';
+        $this->contact->phone = $value;
+        return $this;
     }
-}
-class Economy extends newTaxi
-{
-
-    public function createCarTaxi(): Rate_plan
+    public function name($value): CreatContact
     {
-        return new EconomyTariff();
+        $this->contact->name = $value;
+        return $this;
     }
-}
-class StandardTariff implements Rate_plan
-{
-
-    public function price(): string
+    public function surname($value): CreatContact
     {
-        return '90 грн';
+        $this->contact->surname = $value;
+        return $this;
     }
-
-    public function category(): string
+    public function email($value): CreatContact
     {
-        return 'Стандарт';
+        $this->contact->email = $value;
+        return $this;
     }
-}
-class Standard extends newTaxi
-{
-
-    public function createCarTaxi(): Rate_plan
+    public function address($value): CreatContact
     {
-        return new StandardTariff();
+        $this->contact->address = $value;
+        return $this;
     }
-}
-class LuxTariff implements Rate_plan
-{
-
-    public function price(): string
+    public function build(): Contacts
     {
-        return '190 грн';
-    }
-
-    public function category(): string
-    {
-        return 'Премиум класс (LUX)';
-    }
-}
-class Lux extends newTaxi
-{
-
-    public function createCarTaxi(): Rate_plan
-    {
-        return new LuxTariff();
+        $build = $this->contact;
+        $this->reset();
+        return $build;
     }
 }
 
-echo '<pre>'.'<br>';
-$econom = new Economy();
-var_dump($econom->CategoryAndPrice());
-echo '<pre>'.'<br>';
-echo '<pre>'.'<br>';
-echo '<pre>'.'<br>';
-$standard = new Standard();
-var_dump($standard->CategoryAndPrice());
-$luxcar = new Lux();
-echo '<pre>'.'<br>';
-echo '<pre>'.'<br>';
-var_dump($luxcar->CategoryAndPrice());
+$contact = new Contact();
+$printContact = $contact->phone('000-555-000')->name("test")->surname("test")->email("test@email.com")->address("test")->build();
+
+$printContact2 = $contact->phone('000-000-000')->name("test1")->surname("test1")->email("test1@email.com")->address("test1")->build();
+
+echo '<pre>';
+print_r($printContact);
+
+print_r($printContact2);
