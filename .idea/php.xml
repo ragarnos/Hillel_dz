@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/composer" />
+    </include_path>
+  </component>
   <component name="PhpInterpreters">
     <interpreters>
       <interpreter id="7f921e26-95b8-4f3b-8266-587299c97911" name="PHP 7.4 (project level)" home="C:\php\php.exe" debugger_id="php.debugger.XDebug" />

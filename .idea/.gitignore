@@ -6,3 +6,9 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+dataSources.xml
+php.xml
+vcs.xml
+modules.xml
+Hillel_dz.iml
+workspace.xml
