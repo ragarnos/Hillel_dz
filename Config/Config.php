@@ -6,10 +6,9 @@ class Config
 {
     public static function get(string $name)
     {
-        $configs = include __DIR__ . '/connect.php';
+        $configs = include __DIR__ . '/configs.php';
         $keys = explode('.', $name);
         return self::findByKeys($keys, $configs);
-        dd($configs);
     }
 
     private static function findByKeys(array $keys, array $configs): mixed
