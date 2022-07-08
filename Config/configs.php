@@ -7,4 +7,3 @@ return [
         'password' => getenv('DB_PASSWORD') ?? '',
     ]
 ];
-

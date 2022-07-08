@@ -6,7 +6,7 @@
             "Config\\": "Config/",
             "Core\\": "Core/"
         }
-    },
+    },"files": ["Config/function.php"],
     "authors": [
         {
             "name": "Eduard Vasyliev",
@@ -17,5 +17,6 @@
         "larapack/dd": "^1.1",
         "vlucas/phpdotenv": "^5.4",
         "ext-pdo": "*"
+
     }
 }

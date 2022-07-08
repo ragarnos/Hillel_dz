@@ -24,9 +24,9 @@ class Router
 
     public function dispatch($url)
     {
+
         $url = trim($url, '/');
         $url = $this->removeQueryStringVariables($url);
-
         if ($this->match($url)) {
             if (isset($this->params['method']) && ($_SERVER['REQUEST_METHOD'] !== $this->params['method'])) {
                 throw new \Exception("Method " . $_SERVER['REQUEST_METHOD'] . " doesn't supported by this route");
@@ -57,11 +57,11 @@ class Router
         }
     }
 
-    /**
-     * posts/52/show?some=query&test=value
-     * @param string $url
-     * @return string
-     */
+//    /**
+//     * posts/52/show?some=query&test=value
+//     * @param string $url
+//     * @return string
+//     */
     protected function removeQueryStringVariables(string $url): string
     {
         if ($url != '') {
@@ -72,11 +72,13 @@ class Router
         return $url;
     }
 
-    protected function match(string $url): bool
+    protected function match($url)
     {
+
         foreach ($this->routes as $route => $params) {
             if (preg_match($route, $url, $matches)) {
                 preg_match_all('|\(\?P<[\w]+>\\\\(\w[\+])\)|', $route, $types);
+                dd($route, $url, $matches, $types);
                 $step = 0;
 
                 if (!empty($types)) {

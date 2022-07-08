@@ -2,13 +2,26 @@
 
 namespace Core;
 
-abstract class Controller
+class Controller
 {
-    public function before(string $action): bool
+    protected $validation = "";
+
+    public function __call($name, $args)
+    {
+        $args = $args[0] ?? $args;
+
+        if ($this->before($name)) {
+            call_user_func_array([$this, $name], $args);
+            $this->after();
+        } else {
+            throw new \Exception($this->validation);
+        }
+    }
+
+    protected function before($actionName)
     {
         return true;
     }
 
-    public function after(string $action){}
-
+    protected function after() {}
 }
