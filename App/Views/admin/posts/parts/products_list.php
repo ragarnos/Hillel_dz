@@ -12,7 +12,7 @@
         <tr>
             <th scope="row"><?= $post->id ?></th>
             <td><?= $post->title ?></td>
-            <td><?= $post->created_at ?></td>
+            <td><?= $post->created ?></td>
             <td>
                 <a href="<?= SITE_URL . '/' ."admin/posts/{$post->id}/edit" ?>" class="btn btn-info">Edit</a>
                 <form action="<?= SITE_URL . '/' ."admin/posts/{$post->id}/destroy" ?>" method="post">

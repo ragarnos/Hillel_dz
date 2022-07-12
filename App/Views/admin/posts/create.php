@@ -6,14 +6,14 @@
                 <div class="card w-50 mt-5 container">
                     <h5 class="card-header">Create new post</h5>
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                        <label for="exampleFormControlInput1" class="form-label">Title</label>
+                        <input type="text" class="form-control" name='email' id="exampleFormControlInput1" placeholder="Title">
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Post Desc</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea class="form-control" name='description' id="exampleFormControlTextarea1" rows="4"></textarea>
                     </div>
-                    <button type="submit">Submit</button>
+                    <button type="submit" class="btn btn-success">Submit</button>
                 </div>
             </div>
         </div>

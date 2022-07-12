@@ -32,7 +32,7 @@ class CategoriesController extends BaseController
            'images' => $imagePath,
         ]);
 
-        redirect('admin/categories');
+         header('Location: ' . SITE_URL . '/' . 'admin/categories');
     }
 
     public function edit(int $id)
@@ -54,13 +54,12 @@ class CategoriesController extends BaseController
 
         $category->update($categoryData);
 
-        redirect('admin/categories');
+        header('Location: ' . SITE_URL . '/' . 'admin/categories');
     }
 
     public function destroy(int $id)
     {
         Category::delete($id);
-
-        redirect('admin/categories');
+        header('Location: ' . SITE_URL . '/' . 'admin/categories');
     }
 }

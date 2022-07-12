@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Services\FileUploaderService;
 use Core\View;
+use DateTime;
 
 class PostsController extends BaseController
 {
@@ -22,12 +23,11 @@ class PostsController extends BaseController
 
     public function store()
     {
-        Category::create([
-            'title' => $_POST['name'],
-            'description' => $_POST['description'],
+        Post::create([
+            'title' => $_POST['email'],
+            'body' => $_POST['description'],
         ]);
-
-        redirect('admin/posts');
+        header('Location: ' . SITE_URL . '/' . 'posts');
     }
 
     public function show(int $id)
@@ -37,12 +37,16 @@ class PostsController extends BaseController
 
     public function edit(int $id)
     {
-
+        $post = Post::find($id);
+        View::render('admin/posts/edit', ['post' => $post]);
     }
 
     public function update(int $id)
     {
-
+        $post = Post::find($id);
+        $postData = $_POST;
+        $post->update($postData);
+        header('Location: ' . SITE_URL . '/' . 'admin/posts');
     }
 
     public function destroy(int $id)
