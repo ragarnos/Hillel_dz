@@ -16,7 +16,7 @@
                                    value="<?= !empty($data['name']) ? $data['name'] : '' ?>"
                             >
                             <?php if (!empty($name_error)): ?>
-                                <div class="alert alert-danger"><?= $name_error ?></div>
+                            <div class="alert alert-danger"><?= $name_error ?></div>
                             <?php endif; ?>
                         </div>
 

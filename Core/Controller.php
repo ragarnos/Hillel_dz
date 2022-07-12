@@ -1,27 +1,14 @@
 <?php
-
 namespace Core;
 
-class Controller
+use App\Helpers\SessionHelper;
+
+abstract class Controller
 {
-    protected $validation = "";
-
-    public function __call($name, $args)
-    {
-        $args = $args[0] ?? $args;
-
-        if ($this->before($name)) {
-            call_user_func_array([$this, $name], $args);
-            $this->after();
-        } else {
-            throw new \Exception($this->validation);
-        }
-    }
-
-    protected function before($actionName)
+    public function before(string $action): bool
     {
         return true;
     }
 
-    protected function after() {}
+    public function after(string $action){}
 }

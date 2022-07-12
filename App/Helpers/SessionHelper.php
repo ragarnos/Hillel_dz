@@ -26,8 +26,8 @@ class SessionHelper
 
     public static function destroy()
     {
-        $fields = filter_input_array(INPUT_POST, $_POST, 1);
-        $validator = new UserCreateValidator();
-        session_destroy();
+        if (session_id()) {
+            session_destroy();
+        }
     }
 }
