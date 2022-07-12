@@ -71,10 +71,6 @@ trait QueryTrait
         return (int)static::connect()->lastInsertId();
     }
 
-    /**
-     * $conditions = ['column', '<', 'value']
-     * @param array $conditions
-     */
     public function where(array $conditions)
     {
         $valueKey = array_key_last($conditions);

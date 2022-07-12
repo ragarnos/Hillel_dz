@@ -5,6 +5,8 @@ $router->add('logout', ['controller' => \App\Controllers\AuthController::class, 
 $router->add('registration', ['controller' => \App\Controllers\AuthController::class, 'action' => 'register', 'method' => 'GET']);
 $router->add('auth/verify', ['controller' => \App\Controllers\AuthController::class, 'action' => 'verify', 'method' => 'POST']);
 $router->add('users/store', ['controller' => \App\Controllers\UsersController::class, 'action' => 'store', 'method' => 'POST']);
+$router->add('posts', ['controller' => \App\Controllers\Admin\PostsController::class, 'action' => 'index', 'method' => 'GET']);
+
 
 $router->add('admin/dashboard', ['controller' => \App\Controllers\Admin\DashboardController::class, 'action' => 'index', 'method' => 'GET']);
 $router->add('admin/posts', ['controller' => \App\Controllers\Admin\PostsController::class, 'action' => 'index', 'method' => 'GET']);
